@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block title %}Patient form {% endblock %}
+
+{% block content %}
+<div class="container">   
+    <div class="mx-5 my-5">
+        <h2 class="reg mt-2" style="font-size: 25px;">Registration form</h2><br>
+        <form action="{% url 'create_patient' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Photo</label>
+                <div class="col-5">
+                    <input type="file" name="photo" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Firt Name</label>
+                <div class="col-5">
+                    <input type="text" name="first_name" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Middle Name</label>
+                <div class="col-5">
+                    <input type="text" name="middle_name" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Last Name</label>
+                <div class="col-5">
+                    <input type="text" name="last_name" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Gender</label>
+                <div class="col-5">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="gender" class="form-check-input"> <label class="form-check-label">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="gender" class="form-check-input"> <label class="form-check-label">Female</label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Home Phone Number</label>
+                <div class="col-5">
+                    <input type="text" name="home_phone_number" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Home Address</label>
+                <div class="col-5">
+                    <input type="text" name="home_address" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Office Phone Number</label>
+                <div class="col-5">
+                    <input type="text" name="office_phone_number" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Nationality</label>
+                <div class="col-5">
+                    <input type="text" name="nationality" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Marital Status</label>
+                <div class="col-5">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="marital_status" class="form-check-input"> <label class="form-check-label">Single</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="marital_status" class="form-check-input"> <label class="form-check-label">Married</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="marital_status" class="form-check-input"> <label class="form-check-label">Widow</label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Age</label>
+                <div class="col-5">
+                    <input type="text" name="age" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Nin</label>
+                <div class="col-5">
+                    <input type="text" name="nin" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Office Address</label>
+                <div class="col-5">
+                    <input type="text" name="office_address" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <label class="col-3">Date of Birth</label>
+                <div class="col-5">
+                    <input type="text" name="date_of_birth" class="form-control">
+                </div>
+            </div>
+            <div class="input-group mb-3 col-12">
+                <div class="col-8 text-right">
+                    <a href="{% url 'emergency' %}"><input type="submit" name="submit" value="Submit"></a>
+                </div> 
+            </div>             
+            </form>
+    </div>
+    <!-- <hr>
+    
+    <div class="">
+        <h1>DETAILS</h1>
+        <table border="1px solid" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Full name</th>
+                    <th>Gender</th>
+                    <th>Home phone number</th>
+                    <th>Office phone number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                <tr>
+                    <td>{{patient.id}}</td>
+                    <td>{{patient.last_name}}, {{patient.first_name}} {{patient.middle_name}}</td>
+                    <td>{{patient.gender}}</td>
+    
+                    <td>{{patient.home_phone_number}}</td>
+                    <td>{{patient.office_phone_number}}</td>
+                    <td>
+                        <div class="d-flex justify-center">
+                            <div class="px-4">
+                                <a href="/patient/edit/{{patient.id}}">Edit</a>
+                            </div>
+                            <div class="vr" style="height: 15px;"></div>
+                            <div class="px-4">
+                                <a href="{% url 'detail' patient.id %}">details</a>
+                            </div>
+                            <div class="vr" style="height: 15px;"></div>
+                            <div class="px-4"><a href="{% url 'delete' patient.id %}">Delete</a></div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> -->
+</div>
+
+{% endblock %}

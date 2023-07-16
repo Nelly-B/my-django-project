@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-6" style="">
+        <div class="top d-flex pl-4 pr-5 mt-4" style="justify-content: space-between;">
+            <h1 class="list" style="font-size: 25px;">PATIENTS LIST</h1>
+            <span>
+                <a href="{% url 'create_patient' %}"><button type="button" class="btn btn-success">Add</button></a>
+            </span>
+        </div>
+        <hr>
+        <table class="table table-striped" style="color: gray;">
+            <tbody class="bb" style="color: gray;">
+                {% for patient in patients %}
+                <a href="{% url 'detail' patient.id %}">             
+                    <tr>
+                        <td>
+                            <a href="" class="linkss" style="color:#222;"><h6>{{patient.last_name}}, {{patient.first_name}} {{patient.middle_name}} ({{patient.gender}})</h6>
+                                <span>{{patient.home_phone_number}} >>></span>
+                            </a>                           
+                        </td>                
+                    </tr>
+                </a>
+                {% endfor %}
+            </tbody>
+        </table> 
+    </div>
+    <div class="col-6">
+    </div>
+{% endblock %}

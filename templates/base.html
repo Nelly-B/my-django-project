@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Patient Registration App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'mdb.min.css' %}" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="{% static 'new-prism.css' %}" />
+    <!-- Custom styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"rel="stylesheet"/>
+    <style>
+      .page-intro {
+        background-color: white;
+        width: 100vw;
+        min-height: 100vh;
+      }
+
+      img {
+        max-width: 80%;
+      }
+
+      .mdb-page-content {
+        padding-left: 240px;
+        transition: padding 0.3s linear;
+      }
+
+      #toggler {
+        display: none;
+      }
+
+      @media (max-width: 660px) {
+        .mdb-page-content {
+          padding-left: 0px;
+        }
+
+        #toggler {
+          display: unset;
+        }
+
+        .mask img {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      id="full-screen-example"
+      class="sidenav bg-light"
+      data-color="dark"
+      data-mode="side"
+      data-hidden="false"
+      data-scroll-container="#scrollContainer"
+  >
+      <div class="mt-4">
+        <div id="header-content" class="pl-3">
+          <!-- <img
+            src="https://mdbootstrap.com/img/Photos/Avatars/img%20(23).jpg"
+            alt="avatar"
+            class="rounded-circle img-fluid mb-3"
+            style="max-width: 50px;" -->
+          />
+
+          <h4>
+            <span style="white-space: nowrap;">Ann Smith</span>
+          </h4>
+          <p>ann_s@mdbootstrap.com</p>
+        </div>
+        <hr class="mb-0" />
+      </div>
+      <div id="scrollContainer">
+        <ul class="sidenav-menu">
+          <li class="sidenav-item">
+            <a class="sidenav-link" href="{% url 'dashboard' %}"> <i class="fas fa-envelope pr-3"></i>Dash board</a>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link" href="{% url 'patient' %}"> <i class="fas fa-paper-plane pr-3"></i>Patients</a>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link"> <i class="fas fa-address-book pr-3"></i>Contacts</a>
+            <ul class="sidenav-collapse">
+              <li class="sidenav-item">
+                <a class="sidenav-link">Family</a>
+              </li>
+              <li class="sidenav-item">
+                <a class="sidenav-link" href="/previews/mdb-ui-kit/sidenav/2.html">Friends</a>
+              </li>
+              <li class="sidenav-item">
+                <a class="sidenav-link">Work</a>
+              </li>
+            </ul>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link"> <i class="fas fa-file pr-3"></i>Appointment</a>
+          </li> 
+        </ul>
+      </div>
+    </div>
+    <div class="mdb-page-content page-intro bg-light">
+      <!-- <div class="main-stuff" style=" width: 100%;"> -->
+        {% block content %} {% endblock %}
+      <!-- </div> -->
+       
+    </div>
+    
+
+    <!-- PRISM -->
+    <script type="text/javascript" src="dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="text/javascript" src="dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <!-- Custom scripts -->
+    <script type="text/javascript">
+      const sidenav = document.getElementById('full-screen-example');
+      const instance = mdb.Sidenav.getInstance(sidenav);
+
+      let innerWidth = null;
+
+      const setMode = (e) => {
+        // Check necessary for Android devices
+        if (window.innerWidth === innerWidth) {
+          return;
+        }
+
+        innerWidth = window.innerWidth;
+
+        if (window.innerWidth < 660) {
+          instance.changeMode('over');
+          instance.hide();
+        } else {
+          instance.changeMode('side');
+          instance.show();
+        }
+      };
+
+      setMode();
+
+      // Event listeners
+
+      window.addEventListener('resize', setMode);
+    </script>
+  </body>
+</html>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script> -->
+  </body>
+</html>

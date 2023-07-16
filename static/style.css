@@ -1,0 +1,42 @@
+.pat-form{
+    border: 1px solid green;
+    /* justify-content: center;
+    align-items: center;
+    display: flex; */
+}
+.form-class{
+    border: 10px solid;
+    width: 38%;
+    height: 80%;
+}
+.main-form{
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.view-details{
+    /* border: 1px solid blue; */
+    height: 200px;
+}
+.edit-container{
+    /* border: 1px solid red; */
+    height: 50px;
+    width: 100%;
+}
+button{
+    box-shadow: 2px 2px 8px 2px;
+}
+.col-md-7{
+    background: url(images2/pexels-photo-269077.jpeg)center/cover;
+}
+/* .hover2 a:hover{
+    background-color: gray;
+} */
+
+#header-content{
+    background: url(images2/pexels-photo-269077.jpeg)center/cover;
+}
+.address-info{
+    color: aqua;
+    font-size: 15px;
+    font-weight: lighter;
+}
